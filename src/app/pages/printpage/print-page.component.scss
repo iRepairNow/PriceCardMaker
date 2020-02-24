@@ -1,0 +1,126 @@
+.content{
+  font-family: "Helvetica Neue", sans-serif;
+}
+.productName {
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+  font-size: 42px;
+  font-weight: bold;
+  margin-top: 1em;
+}
+
+.status {
+  display: block;
+  margin: .45em auto 1.4em;
+  text-align: center;
+  font-size: 36px;
+}
+
+.line {
+  margin-right: 3em;
+  margin-left: 3em;
+  display: block;
+  margin-top: 1em;
+}
+
+.sellingPoints {
+  min-height: 29.4em;
+}
+
+.tableSellingPoints {
+  margin-right: auto;
+  margin-left: 1.3em;
+  margin-top: 1em;
+  font-size: 30px;
+  td {
+    padding-right: 2em;
+    padding-top: .4em;
+  }
+}
+
+.prices {
+  text-align: right;
+  display: flex;
+  margin-top: .3em;
+  margin-left: auto;
+  margin-right: .6em;
+  font-size: 108px;
+  font-weight: bold;
+  justify-content: right;
+  .price{
+    margin-right: .3em;
+    margin-left: auto;
+  }
+  .salePrice{
+    margin-left: auto;
+    color: red;
+  }
+}
+
+.marge{
+  text-align: right;
+  font-weight: bold;
+  margin-right: 6.5em;
+  text-transform: uppercase;
+  margin-bottom: .6em;
+}
+
+.logo {
+  display: none;
+  margin-top: 1.5em;
+  margin-right: auto;
+  margin-left: auto;
+  left: 10px;
+  height: 7.8em;
+  padding: 20px 40px;
+  background-color: #4e9cf5;
+  bottom:0;
+  position: absolute;
+  width: 86.6vw;
+  overflow: hidden;
+  @media print {
+    display: block;
+  }
+  img {
+    max-width: 95%;
+    max-height: 95%;
+  }
+}
+
+.pdfButton {
+  @media print {
+    display: none;
+  }
+}
+
+hr {
+  border-color: black;
+}
+@media screen {
+  .printContent{
+    margin-top: 1em;
+    margin-right: auto;
+    margin-left: auto;
+    width: 70%;
+    height: 70%;
+    background-color: white;
+  }
+}
+
+@media print {
+  mat-card{
+    box-shadow: none !important;
+  }
+  mat-toolbar{
+    display: none;
+  }
+}
+
+.toolbarItem{
+  margin-left: 1em;
+}
+.title{
+  margin-right: 1em;
+}

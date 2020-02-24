@@ -1,0 +1,25 @@
+<mat-card (click)="toggleSelected(obj, $event)">
+  <span>Previous Card's</span>
+  <button *ngIf="ShowHiddenFeauture" mat-raised-button color="warn" class="hiddenFeature" (click)="deleteAll()"> Delete all (Beta)</button>
+</mat-card>
+<div *ngFor="let priceCard of priceCards; let i=index" class="content">
+  <mat-card class="priceCards">
+    <mat-card-title>{{priceCard.Name}}</mat-card-title>
+    <mat-card-content>
+      Price:€ {{priceCard.productPrice}}
+      <br>
+      Status: {{priceCard.status}}
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" (click)="goToEditor(priceCard._id)">Go to PriceCard</button>
+      <button mat-raised-button color="warn" (click)="deletePriceCard(priceCard._id)"><i class="material-icons">
+        delete_forever
+      </i></button>
+    </mat-card-actions>
+  </mat-card>
+</div>
+
+
+
+
+

@@ -1,0 +1,113 @@
+<body>
+<div class="container">
+  <mat-card class="card">
+    <mat-card-title>Editor</mat-card-title>
+
+    <mat-card-content>
+      <form [formGroup]="myForm">
+        <mat-form-field>
+          <input matInput placeholder="Product naam" formControlName="Name" [(ngModel)]="state.Name" required>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput placeholder="Status product" formControlName="status" [(ngModel)]="state.status">
+        </mat-form-field>
+
+        <section>
+          <mat-checkbox formControlName="marge" color="primary" [(ngModel)]="state.marge">Marge regeling text
+          </mat-checkbox>
+        </section>
+
+        <mat-form-field>
+          <input matInput placeholder="product prijs" formControlName="productPrice" [(ngModel)]="state.productPrice"
+                 required>
+        </mat-form-field>
+
+        <section>
+          <mat-checkbox
+            formControlName="sale"
+            color="primary"
+            [(ngModel)]="state.sale"
+            (change)="toggleSalePrice(state.sale)">
+            Afprijzing
+          </mat-checkbox>
+        </section>
+
+        <mat-form-field *ngIf="showSale">
+          <input matInput placeholder="Sale prijs" formControlName="salePrice" [(ngModel)]="state.salePrice">
+        </mat-form-field>
+
+        <h3>Verkoop punten</h3>
+
+        <div formArrayName="sellingPoints">
+          <mat-list>
+            <div *ngFor="let sellingPoint of sellingPointForms.controls; let i=index"
+                 [formGroupName]="i">
+
+              <mat-list-item>
+                <i class="material-icons">
+                  keyboard_arrow_right
+                </i>
+                <mat-form-field>
+                  <input matInput placeholder="Selling Point" formControlName="nameSellingPoint" maxlength="15">
+                </mat-form-field>
+                <mat-form-field>
+                  <input matInput placeholder="Value" formControlName="valueSellingPoint" maxlength="40">
+                </mat-form-field>
+
+                <button mat-raised-button class="delete" color="warn" (click)="deleteSellingPoint(i)"><i
+                  class="material-icons">
+                  delete_forever
+                </i></button>
+              </mat-list-item>
+
+            </div>
+          </mat-list>
+        </div>
+
+        <button mat-raised-button color="primary" (click)="addSellingPoint()" class="addButton">
+          <i class="material-icons">
+            add
+          </i> selling point
+        </button>
+
+      </form>
+    </mat-card-content>
+  </mat-card>
+  <br>
+  <mat-card>
+    <mat-card-title>actions</mat-card-title>
+    <mat-card-content>
+      <button mat-raised-button color="accent" (click)="save(myForm.value)"><i class="material-icons">
+        save
+      </i>save
+      </button>
+
+      <button mat-raised-button color="primary" (click)="saveAsTemp(myForm.value)"><i class="material-icons">
+        save
+      </i>save as template
+      </button>
+
+      <button mat-raised-button (click)="toPrint(myForm.value)">
+        <i class="material-icons">
+          print
+        </i>Print pagina
+      </button>
+
+      <div style="margin-top: 3em">
+        <mat-form-field class="templateSelector">
+          <mat-select [formControl]="selectTemplateForm" placeholder="Select Template">
+            <mat-option *ngFor="let template of templates" [value]="template._id">
+              Template: {{template.Name}}
+            </mat-option>
+          </mat-select>
+          <mat-hint align="end">Here's the dropdown arrow ^</mat-hint>
+        </mat-form-field>
+
+        <button mat-raised-button (click)="selectTemplate(selectTemplateForm)">Choose Template</button>
+      </div>
+
+    </mat-card-content>
+  </mat-card>
+</div>
+</body>

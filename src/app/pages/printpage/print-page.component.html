@@ -1,0 +1,71 @@
+<mat-toolbar>
+  <span class="title">toolbar</span>
+
+  <button mat-mini-fab class="toolbarItem" color="primary" (click)="backToEditor()" matTooltip="Back to Editor"
+          [matTooltipShowDelay]="500">
+    <i class="material-icons">
+      keyboard_backspace
+    </i>
+  </button>
+
+  <button mat-mini-fab color="primary" class="toolbarItem" (click)="makePdf()" matTooltip="Download as PDF (BETA)"
+          [matTooltipShowDelay]="500">
+    <i class="material-icons">
+      cloud_download
+    </i>
+  </button>
+
+  <button mat-mini-fab class="toolbarItem" color="primary" (click)="printer()">
+    <i class="material-icons">
+      print
+    </i>
+  </button>
+
+
+</mat-toolbar>
+<div class="printContent" id="printContent">
+  <mat-card>
+    <div id="content" class="content">
+      <div class="productName">{{state.Name}}</div>
+      <div class="status">{{state.status}}</div>
+
+      <div class="line">
+        <hr>
+      </div>
+      <div class="sellingPoints">
+        <table class="tableSellingPoints">
+          <tr *ngFor="let sellingPoint of this.state.sellingPoints">
+            <td>{{sellingPoint.nameSellingPoint}}:</td>
+            <td>{{sellingPoint.valueSellingPoint}}</td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="line">
+        <hr>
+      </div>
+      <div class="prices">
+        <div *ngIf="state.sale" class="salePrice">
+         € {{state.salePrice}}
+        </div>
+        <div class="price">
+          <del *ngIf="state.sale" style="text-decoration-color: red;">€ {{state.productPrice}}</del>
+          <div *ngIf="!state.sale">€ {{state.productPrice}}</div>
+        </div>
+      </div>
+
+    </div>
+    <div class="marge" *ngIf="state.marge">
+      marge-regeling ( btw-vrij )
+    </div>
+    <div class="marge" *ngIf="!state.marge">
+      incl. btw
+    </div>
+  </mat-card>
+
+  <div class="logo" id="logo">
+    <img src="assets/images/iRN_logo_groot_wit.png" alt="logo">
+  </div>
+
+</div>
+
